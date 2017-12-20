@@ -157,3 +157,13 @@ struct Medium_031_Next_Permutation {
         }
     }
 }
+
+
+//the sum of an array elements
+func sumOfElements( n: Int , arr: [Int]) -> Int {
+    var sum = 0
+    for i in 0..<n {
+        sum += arr[i]
+    }
+    return sum
+}
