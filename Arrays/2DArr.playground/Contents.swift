@@ -167,3 +167,22 @@ func sumOfElements( n: Int , arr: [Int]) -> Int {
     }
     return sum
 }
+
+
+//compare triplets problem
+
+let arrA = readLine()!.components(separatedBy: " ").map{ Int($0)! }
+let arrB = readLine()!.components(separatedBy: " ").map{ Int($0)! }
+
+var aliceScore = 0
+var bobScore = 0
+
+for index in 0...2{
+    if (arrA[index] > arrB[index]){
+        aliceScore += 1
+    }
+    if (arrA[index] < arrB[index]){
+        bobScore += 1
+    }
+}
+//print("\(aliceScore)" + " " + "\(bobScore)")
