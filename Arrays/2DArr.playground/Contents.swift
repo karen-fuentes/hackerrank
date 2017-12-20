@@ -62,101 +62,6 @@ var square =
 
 
 
-//class Node {
-//    var key: Int
-//    var next: Node?
-//    init(key: Int) {
-//        self.key = key
-//    }
-//}
-//struct Stack<Element> {
-//
-//    private var arr = [Element]()
-//
-//   mutating func push(input:Element) -> Void {
-//    arr.append(input)
-//
-//    }
-//
-//    mutating func pop() -> Element? {
-//
-//        return arr.popLast()
-//
-//    }
-//
-//    mutating func peek() -> Element? {
-//
-//        return arr.last
-//
-//    }
-//
-//    var isEmpty: Bool {
-//        return self.arr.count == 0
-//    }
-//
-//}
-class Node {
-    var key: Int
-    var next: Node?
-    init(key: Int) {
-        self.key = key
-    }
-}
-func sumOfNodes(from node: Node) -> Int {
-    
-    var sum = 0
-    
-    while (node.next != nil) {
-        
-        sum += node.key
-        
-    }
-    
-    return sum
-    
-}
-
-
-let nodeOne = Node(key: 3)
-//nodeOne.next = Node(key: 3)
-sumOfNodes(from: nodeOne)
-struct Medium_031_Next_Permutation {
-    static func reverseInPlace(nums: inout [Int], start: Int, end: Int) {
-        if start > end {
-            return
-        }
-        for i in start ... (start + end)/2 {
-            nums.swapAt(i, start + end - i)
-        }
-    }
-    static func nextPermutation(_ nums: inout [Int]) {
-        let length: Int = nums.count
-        if length < 2 {
-            return
-        }
-        var index: Int = length - 1
-        while index > 0 {
-            if nums[index - 1] < nums[index] {
-                break
-            }
-            index -= 1
-        }
-        if index == 0 {
-            reverseInPlace(nums: &nums, start: 0, end: length - 1)
-        } else {
-            let value: Int = nums[index - 1]
-            var i: Int = length - 1
-            while i >= index {
-                if nums[i] > value {
-                    break
-                }
-                i -= 1
-            }
-            nums.swapAt(i, index-1)
-            reverseInPlace(nums: &nums, start: index, end: length - 1)
-        }
-    }
-}
 
 
 //the sum of an array elements
@@ -171,18 +76,46 @@ func sumOfElements( n: Int , arr: [Int]) -> Int {
 
 //compare triplets problem
 
-let arrA = readLine()!.components(separatedBy: " ").map{ Int($0)! }
-let arrB = readLine()!.components(separatedBy: " ").map{ Int($0)! }
-
-var aliceScore = 0
-var bobScore = 0
-
-for index in 0...2{
-    if (arrA[index] > arrB[index]){
-        aliceScore += 1
+// MAX THREE NUMBER PRODUCT
+func maximumProduct(_ nums: [Int]) -> Int {
+    
+    var largest = Int.min
+    var secondLargest = Int.min
+    var thirdLargest = Int.min
+    var smallest = Int.max
+    var secondSmallest = Int.max
+    
+    for numb in nums {
+        
+        if numb > largest {
+            thirdLargest = secondLargest
+            secondLargest = largest
+            largest = numb
+        }else if numb > secondLargest {
+            thirdLargest = secondLargest
+            secondLargest = numb
+        }else if numb > thirdLargest{
+            thirdLargest = numb
+        }
+        
+        if numb < smallest {
+            secondSmallest = smallest
+            smallest = numb
+        } else if numb < secondSmallest {
+            secondSmallest = numb
+        }
     }
-    if (arrA[index] < arrB[index]){
-        bobScore += 1
-    }
+    return max( (largest * secondLargest * thirdLargest) , (largest * secondSmallest * smallest))
 }
-//print("\(aliceScore)" + " " + "\(bobScore)")
+//PANGRAM
+func pangram(_ str: String) -> Bool {
+    var set = Set<Character>()
+    
+    for c in str.lowercased() {
+        if CharacterSet.lowercaseLetters.contains(UnicodeScalar(String(c))!) {
+            set.insert(c)
+        }
+    }
+    
+    return set.count == 26
+}
