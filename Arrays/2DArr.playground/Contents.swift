@@ -61,9 +61,6 @@ var square =
 //}
 
 
-
-
-
 //the sum of an array elements
 func sumOfElements( n: Int , arr: [Int]) -> Int {
     var sum = 0
@@ -118,4 +115,42 @@ func pangram(_ str: String) -> Bool {
     }
     
     return set.count == 26
+}
+// Ransom Note
+func canConstruct(_ ransomNote: String, _ magazine: String) -> Bool {
+    var magazineDict = frequencyDictMaker(str: magazine)
+    for char in ransomNote {
+        if magazineDict[char] == 0 {
+          return false
+        } else {
+            magazineDict[char]! -= 1
+        }
+    }
+    return true
+}
+func frequencyDictMaker(str: String) -> [Character: Int] {
+    var resultDict = [Character: Int]()
+    for char in str {
+        resultDict[char] = (resultDict[char] ?? 0) + 1
+    }
+    return resultDict
+}
+//canConstruct("aa", "ab")
+
+func canConstruct2(_ ransomNote: String, _ magazine: String) -> Bool {
+    if ransomNote.isEmpty {
+        return true
+    }
+    var arr = Array(repeating: 0, count: 26)
+    
+    for i in magazine.utf8 {
+        arr[Int(i)-97] += 1
+    }
+    for i in ransomNote.utf8 {
+        arr[Int(i)-97] -= 1
+        if arr[Int(i)-97] < 0 {
+            return false
+        }
+    }
+    return true
 }
