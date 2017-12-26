@@ -60,3 +60,14 @@ func factorial(n: Int) -> Int{
     return n * factorial(n: n-1)
 }
 factorial(n: 3)
+
+
+func largest(_ arr: [Int]) -> Int {
+    var largest = Int.min
+    for numb in arr {
+        if numb > largest {
+            largest = numb
+        }
+}
+    return largest
+}
