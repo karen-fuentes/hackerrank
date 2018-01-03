@@ -66,7 +66,7 @@ func largest(_ arr: [Int]) -> Int {
     var largest = Int.min
     for numb in arr {
         if numb > largest {
-            largest = numb
+            largest = numb 
         }
 }
     return largest
