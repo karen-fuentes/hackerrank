@@ -16,4 +16,29 @@ for index in 0..<arr.count {
    // print(rDiagonalSum)
 }
 
- print(abs(lDiagonalSum - rDiagonalSum))
+// print(abs(lDiagonalSum - rDiagonalSum))
+
+
+// percentage of positive negative and zero elements in arr
+let numberArr = [-4, 3 ,-9 ,0 ,4 ,1]
+var positiveNumbCounter = 0.0
+var negativeNumbCounter = 0.0
+var zeroCounter = 0.0
+
+
+for i in 0..<numberArr.count {
+    if numberArr[i] == 0 {
+        //print("number is zero at index: \(i) and has a value of:\(numberArr[i])")
+        zeroCounter += 1
+    }else if numberArr[i] > 0 {
+        positiveNumbCounter += 1
+    }else {
+        negativeNumbCounter += 1
+    }
+
+        
+}
+
+print(positiveNumbCounter/Double(numberArr.count), negativeNumbCounter/Double(numberArr.count), zeroCounter/Double(numberArr.count))
+1.0 / 6.0
+
