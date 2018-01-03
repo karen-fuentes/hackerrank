@@ -39,6 +39,17 @@ for i in 0..<numberArr.count {
         
 }
 
-print(positiveNumbCounter/Double(numberArr.count), negativeNumbCounter/Double(numberArr.count), zeroCounter/Double(numberArr.count))
-1.0 / 6.0
+print("""
+    \(positiveNumbCounter/Double(numberArr.count))
+    \(negativeNumbCounter/Double(numberArr.count))
+    \(zeroCounter/Double(numberArr.count))
+""")
 
+// printing hashtag staircase
+var hash = "#"
+for i in 0..<4 {
+
+    let spaces = (String(repeatElement(" ", count: 4-i-1)))
+    print(spaces + hash)
+    hash += "#"
+}
